@@ -1,0 +1,18 @@
+@import 'variables';
+
+body {
+  font-family: $lato;
+}
+
+h1, h2, h3 {
+  font-family: $caveat;
+  font-size: 64px;
+}
+a {
+  font-family: $lato;
+  color: $black;
+}
+
+a:hover {
+  color: $rosegold;
+}

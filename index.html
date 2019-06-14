@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Emily & Alex 2019</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Caveat|Lato" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+  <script src="wedding.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+
+  <div id="app" class="container mt-3">
+    <div class="row">
+      <div class="col-md-12 text-center header">
+        <div class="info-holder">
+          <h1 class="title" v-bind="info">{{title}}</h1>
+          <h4 class="date">{{info.date}}</h4>
+          {{countdown}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center divider">
+      <div class="link-bar" role="group">
+        <a href="#" @click="goHome" class="btn">Home</a>
+        <a href="#" @click="goWeddingInfo" class="btn">Details</a>
+        <a href="#" @click="goAccomodations" class="btn">Accomodations</a>
+
+        <div class="btn-group" role="group">
+          <button id="registrygroup" type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Registry
+          </button>
+          <div class="dropdown-menu" aria-labelledby="registrygroup">
+            <a v-for="store in registry" class="dropdown-item" target="_blank"
+              v-bind:href="store.link">{{store.label}}</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <component :is="theComponent"></component>
+
+  </div>
+
+  <template id="home">
+    <div class="row text-center">
+      <div class="col-md-12 p-3 mt-3">
+        <img class="picture-frame img-fluid" src="images/emilyalex.jpg">
+      </div>
+    </div>
+  </template>
+
+  <template id="weddingInfo">
+    <div class="row text-center border-dark p-3 mt-3">
+      <div class="col-md-6 content-padding">
+        <h4>Ceremony and Reception</h4>
+        <p>4:30 pm, Saturday September 14, 2019<br />
+          Porta Asbury Park<br />
+          911 Kingsley St, Asbury Park, NJ 07712
+        </p>
+        <p class="italic">Reception to immediately follow</p>
+
+        <a
+          href="https://maps.google.com/maps?ll=40.220226,-74.002336&z=16&t=m&hl=en&gl=US&mapclient=embed&daddr=Porta%20911%20Kingsley%20St%20Asbury%20Park%2C%20NJ%2007712@40.220226,-74.002336">Get
+          Directions</a></p>
+
+      </div>
+
+      <div class="col-md-6">
+          <iframe class="map-frame"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3046.498106213889!2d-74.00452468492206!3d40.22022597938853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c226419622ea2d%3A0x5870d31008fa1675!2sPorta!5e0!3m2!1sen!2sus!4v1559345703519!5m2!1sen!2sus"
+            width="400px" height="400px" frameborder="0"allowfullscreen></iframe></div>
+    </div>
+  </template>
+
+  <template id="accomodations">
+    <div class="row text-center border-dark p-3 mt-3">
+      <div class="col-md-6 content-padding">
+        <h4>Accomodations</h4>
+        <p>Homewood Suites by Hilton<br />
+          4 Industrial Way East<br />
+          Eatontown, NJ 07724</p>
+        <p>
+          A block of rooms has been reserved at a special rate. Please book your reservation by August 13, 2019 by
+          calling 800-225-5466, or visiting <a
+            href="https://eatontown.homewoodsuites.com">https://eatontown.homewoodsuites.com</a> and using the group
+          rate _NRB.
+        </p>
+      </div>
+
+      <div class="col-md-6">
+
+          <iframe class="map-frame"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12175.950627789027!2d-74.0422431!3d40.2760244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3a8b657fd73b7b5d!2sHomewood+Suites+by+Hilton+Eatontown!5e0!3m2!1sen!2sus!4v1560110904819!5m2!1sen!2sus"
+             width="400px" height="400px" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+    </div>
+  </template>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymowous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+
+  <script src="index.js"></script>
+
+
+
+
+</body>
+
+</html>
