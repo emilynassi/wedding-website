@@ -70,3 +70,7 @@ a:hover {
 .content-padding{
   padding-top: 40px;
 }
+
+.active-tab {
+  color: rosybrown;
+}

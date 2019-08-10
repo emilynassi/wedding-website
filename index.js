@@ -19,6 +19,7 @@ let app = new Vue({
   el: "#app",
   data: {
     theComponent: 'home',  // this is the 'name' of the current component
+    activeTab: 'home',
     info: {
       date: 'September 14, 2019',
       venue: 'Porta Asbury Park'
@@ -37,13 +38,17 @@ let app = new Vue({
   },
   methods: {
     goHome: function() {
-    	this.theComponent = 'home';
+      this.theComponent = 'home';
+      this.activeTab = 'home';
+      
     },
     goWeddingInfo: function() {
-    	this.theComponent = 'weddingInfo';
+      this.theComponent = 'weddingInfo';
+      this.activeTab = 'weddingInfo';
     },
     goAccomodations : function() {
-    	this.theComponent = 'accomodations';
+      this.theComponent = 'accomodations';
+      this.activeTab = 'accomdations'
     },
   },
 

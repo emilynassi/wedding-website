@@ -33,9 +33,9 @@
 
     <div class="row text-center divider">
       <div class="link-bar" role="group">
-        <a href="#" @click="goHome" class="btn">Home</a>
-        <a href="#" @click="goWeddingInfo" class="btn">Details</a>
-        <a href="#" @click="goAccomodations" class="btn">Accomodations</a>
+        <a href="#" :class="{'active-tab': activeTab === 'home'}" @click="goHome" class="btn">Home</a>
+        <a href="#" :class="{'active-tab': activeTab === 'weddingInfo'}" @click="goWeddingInfo" class="btn">Details</a>
+        <a href="#" @click="goAccomodations" :class="{'active-tab': activeTab === 'accomdations'}" class="btn">Accomodations</a>
 
         <div class="btn-group" role="group">
           <button id="registrygroup" type="button" class="btn dropdown-toggle" data-toggle="dropdown"
